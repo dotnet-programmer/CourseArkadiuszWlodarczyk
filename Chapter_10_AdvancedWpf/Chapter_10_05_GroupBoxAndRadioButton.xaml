@@ -1,0 +1,42 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapter_10_05_GroupBoxAndRadioButton"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="d"
+		Title="Chapter_10_05_GroupBoxAndRadioButton"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<StackPanel>
+		<GroupBox Margin="10">
+			<GroupBox.Header>
+				<Bold>Ile grasz dziennie na komputerze?</Bold>
+			</GroupBox.Header>
+			<StackPanel Margin="10">
+				<RadioButton Content="wcale" />
+				<RadioButton Content="1-3h" />
+				<RadioButton Content="3-6h" />
+				<RadioButton Content="24/h ;)" />
+			</StackPanel>
+		</GroupBox>
+		<GroupBox Margin="10">
+			<GroupBox.Header>
+				<Bold>Ile dziennie śpisz?</Bold>
+			</GroupBox.Header>
+			<StackPanel Margin="10">
+				<RadioButton Content="wcale" />
+				<RadioButton Content="1-3h" />
+				<RadioButton Content="3-6h" />
+				<RadioButton x:Name="RbMore">
+					<WrapPanel>
+						<Label Content="więcej:" />
+						<TextBox MinWidth="50"
+								 IsEnabled="{Binding ElementName=RbMore, Path=IsChecked}" />
+					</WrapPanel>
+				</RadioButton>
+			</StackPanel>
+		</GroupBox>
+	</StackPanel>
+</Window>

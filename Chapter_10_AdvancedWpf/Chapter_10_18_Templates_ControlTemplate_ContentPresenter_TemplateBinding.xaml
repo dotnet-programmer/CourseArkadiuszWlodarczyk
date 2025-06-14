@@ -1,0 +1,75 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapter_10_18_Templates_ControlTemplate_ContentPresenter_TemplateBinding"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="d"
+		Title="Chapter_10_18_Templates_ControlTemplate_ContentPresenter_TemplateBinding"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<!--szablon to coś, co zmienia drzewo wizualne kontrolek-->
+	<Window.Resources>
+		
+		<ControlTemplate x:Key="ButtonTemplateEllipse"
+						 TargetType="{x:Type Button}">
+			
+			<Grid>
+				
+				<Ellipse Width="{TemplateBinding Width}"
+						 Height="{TemplateBinding Height}"
+						 Fill="AliceBlue" />
+				
+				<StackPanel HorizontalAlignment="Center"
+							VerticalAlignment="Center">
+					<Ellipse Fill="Black"
+							 Width="20"
+							 Height="20" />
+					<TextBlock>
+						<ContentPresenter />
+					</TextBlock>
+				</StackPanel>
+				
+			</Grid>
+		</ControlTemplate>
+	</Window.Resources>
+
+	<StackPanel>
+		<Button Width="150"
+				Height="150"
+				Content="Zmiana contetu"
+				Template="{StaticResource ButtonTemplateEllipse}" />
+		
+		<Button Width="50"
+				Height="50"
+				Content="Coś"
+				Template="{StaticResource ButtonTemplateEllipse}" />
+
+		<Button Width="250"
+				Height="150">
+			
+			<Button.Content>
+				<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Ellipse Fill="BurlyWood"
+							 Width="30"
+							 Height="30" />
+					<TextBlock Text="Template w buttonie" />
+				</StackPanel>
+			</Button.Content>
+			
+			<Button.Template>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Grid>
+						<!--TemplateBinding wiąże względem rodzica-->
+						<Ellipse Width="{TemplateBinding Width}"
+								 Height="{TemplateBinding Height}"
+								 Fill="Aquamarine" />
+						<!--ContentPresenter prezentuje to co znajduje sie w kontencie kontrolki, która jest rodzicem-->
+						<ContentPresenter />
+					</Grid>
+				</ControlTemplate>
+			</Button.Template>
+		</Button>
+	</StackPanel>
+</Window>

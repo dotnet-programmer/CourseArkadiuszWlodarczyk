@@ -1,0 +1,85 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapter_10_25_TemplateSelector"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:Chapter_10_AdvancedWpf"
+		mc:Ignorable="d"
+		Title="Chapter_10_25_TemplateSelector"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<Window.Resources>
+		<DataTemplate x:Key="MaleTemplate">
+			<TextBlock Text="{Binding Path=Description}"
+					   Foreground="Blue" />
+		</DataTemplate>
+		<DataTemplate x:Key="FemaleTemplate">
+			<TextBlock Text="{Binding Path=Description}"
+					   Foreground="Pink" />
+		</DataTemplate>
+		<local:GenderTemplateSelector x:Key="genderTemplateSelector"
+									  MaleTemplate="{StaticResource MaleTemplate}"
+									  FemaleTemplate="{StaticResource FemaleTemplate}" />
+	</Window.Resources>
+
+	<StackPanel>
+		<DataGrid x:Name="dataGridOfPeople"
+				  SelectionMode="Extended"
+				  SelectionUnit="CellOrRowHeader"
+				  AlternatingRowBackground="BurlyWood"
+				  AlternationCount="2"
+				  FrozenColumnCount="1"
+				  HeadersVisibility="All"
+				  AutoGenerateColumns="False"
+				  RowDetailsTemplateSelector="{StaticResource genderTemplateSelector}">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Name"
+									Binding="{Binding Path=Name}">
+					<DataGridTextColumn.CellStyle>
+						<Style TargetType="DataGridCell">
+							<Setter Property="Background"
+									Value="Azure" />
+						</Style>
+					</DataGridTextColumn.CellStyle>
+					<DataGridTextColumn.HeaderStyle>
+						<Style TargetType="DataGridColumnHeader">
+							<Setter Property="FontWeight"
+									Value="Bold" />
+						</Style>
+					</DataGridTextColumn.HeaderStyle>
+					<DataGridTextColumn.HeaderTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding}" />
+						</DataTemplate>
+					</DataGridTextColumn.HeaderTemplate>
+				</DataGridTextColumn>
+				<DataGridTextColumn Header="Age"
+									Binding="{Binding Path=Age}" />
+				<DataGridTextColumn Header="Email"
+									Binding="{Binding Path=Email}" />
+				<DataGridCheckBoxColumn Header="Newsletter"
+										Binding="{Binding Path=IsSubscribedToNewsletter}" />
+				<DataGridHyperlinkColumn Header="WWW"
+										 Binding="{Binding Path=Website}" />
+				<DataGridComboBoxColumn Header="Sex"
+										x:Name="ComboxBoxColumnSex"
+										SelectedValueBinding="{Binding Path=GenderType}" />
+				<DataGridTemplateColumn Header="Image">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Image Source="{Binding Path=Image}" />
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+			<DataGrid.RowStyle>
+				<Style TargetType="DataGridRow">
+					<Setter Property="Background"
+							Value="AntiqueWhite" />
+				</Style>
+			</DataGrid.RowStyle>
+		</DataGrid>
+	</StackPanel>
+</Window>

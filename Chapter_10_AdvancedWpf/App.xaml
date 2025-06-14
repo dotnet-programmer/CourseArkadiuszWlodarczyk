@@ -1,0 +1,10 @@
+﻿<Application x:Class="Chapter_10_AdvancedWpf.App"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:Chapter_10_AdvancedWpf"
+			 xmlns:prop="clr-namespace:Chapter_10_AdvancedWpf"
+			 StartupUri="MainWindow.xaml">
+	<Application.Resources>
+		<!--<prop:InkEditingModes x:Key="inkEditingModes" EditingMode="EraseByPoint"/>-->
+	</Application.Resources>
+</Application>
