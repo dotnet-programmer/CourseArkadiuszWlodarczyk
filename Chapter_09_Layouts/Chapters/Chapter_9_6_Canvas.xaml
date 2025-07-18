@@ -1,0 +1,21 @@
+﻿<Window x:Class="Chapter_09_Layouts.Chapters.Chapter_9_6_Canvas"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="Chapter_9_6_Canvas"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<Grid Width="300">
+		<Canvas Background="Teal">
+			<Button Canvas.Left="50"
+					Canvas.Top="50"
+					Content="Button"
+					Width="75" />
+			<Button Canvas.Left="150"
+					Canvas.Top="150"
+					Content="Button"
+					Width="75" />
+		</Canvas>
+	</Grid>
+</Window>

@@ -1,0 +1,45 @@
+﻿<Window x:Class="Chapter_09_Layouts.Chapters.Chapter_9_9_RadioButton_GroupBox_Label"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="Chapter_9_9_RadioButton_GroupBox_Label"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<StackPanel>
+		<GroupBox Margin="10">
+			<GroupBox.Header>
+				<Bold>Ile grasz dziennie na komputerze?</Bold>
+			</GroupBox.Header>
+			<StackPanel  Margin="10">
+				<RadioButton Content="wcale" />
+				<RadioButton Content="1-3h" />
+				<RadioButton Content="3h-6h" />
+				<RadioButton Content="gram 24/h ;)" />
+			</StackPanel>
+		</GroupBox>
+
+		<GroupBox Margin="10"
+				  Header="Ile śpisz dziennie?">
+			<StackPanel Margin="10">
+				<RadioButton Content="wcale" />
+				<RadioButton Content="1-3h" />
+				<RadioButton Content="3h-6h" />
+				<RadioButton Content="śpię 24/h ;)" />
+			</StackPanel>
+		</GroupBox>
+
+		<StackPanel Margin="10">
+			<Label FontWeight="Bold"
+				   Content="Kolejne pytanie:" />
+			<RadioButton GroupName="Question3"
+						 Content="1" />
+			<RadioButton GroupName="Question3"
+						 Content="2" />
+			<RadioButton GroupName="Question3"
+						 Content="3" />
+			<RadioButton GroupName="Question3"
+						 Content="4" />
+		</StackPanel>
+	</StackPanel>
+</Window>
