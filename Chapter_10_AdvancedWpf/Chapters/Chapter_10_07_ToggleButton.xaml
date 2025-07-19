@@ -1,0 +1,54 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapters.Chapter_10_07_ToggleButton"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="Chapter_10_07_ToggleButton"
+		Height="500"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<StackPanel>
+		<ToggleButton x:Name="BtnSurvey"
+					  Content="Pokaż ankietę"
+					  IsChecked="{Binding ElementName=Survey, Path=IsOpen}" />
+		<Popup x:Name="Survey"
+			   AllowsTransparency="True"
+			   PlacementTarget="{Binding ElementName=BtnSurvey}">
+			<StackPanel>
+				<GroupBox Margin="10">
+					<GroupBox.Header>
+						<Bold>Ile grasz dziennie na komputerze?</Bold>
+					</GroupBox.Header>
+					<StackPanel Margin="10">
+						<RadioButton Content="wcale" />
+						<RadioButton Content="1-3h" />
+						<RadioButton Content="3-6h" />
+						<RadioButton Content="24/h ;)" />
+					</StackPanel>
+				</GroupBox>
+				<GroupBox Margin="10">
+					<GroupBox.Header>
+						<Bold>Ile dziennie śpisz?</Bold>
+					</GroupBox.Header>
+					<StackPanel Margin="10">
+						<RadioButton Content="wcale" />
+						<RadioButton Content="1-3h" />
+						<RadioButton Content="3-6h" />
+						<RadioButton x:Name="RbMore">
+							<WrapPanel x:Name="PopupPanel">
+								<Label Content="więcej:" />
+								<Popup IsOpen="{Binding ElementName=RbMore, Path=IsChecked}"
+									   PlacementTarget="{Binding ElementName=PopupPanel}"
+									   HorizontalOffset="50"
+									   Placement="Right"
+									   PopupAnimation="Scroll"
+									   AllowsTransparency="True">
+									<TextBox MinWidth="50" />
+								</Popup>
+							</WrapPanel>
+						</RadioButton>
+					</StackPanel>
+				</GroupBox>
+			</StackPanel>
+		</Popup>
+	</StackPanel>
+</Window>

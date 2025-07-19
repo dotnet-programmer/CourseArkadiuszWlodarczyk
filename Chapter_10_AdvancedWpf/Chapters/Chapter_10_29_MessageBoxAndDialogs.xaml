@@ -1,0 +1,62 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapters.Chapter_10_29_MessageBoxAndDialogs"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:helpers="clr-namespace:Chapter_10_AdvancedWpf.Helpers"
+		Title="Chapter_10_29_MessageBoxAndDialogs"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<Window.CommandBindings>
+		<CommandBinding Command="helpers:CustomCommands.Exit"
+						Executed="CommandBinding_Executed"
+						CanExecute="CommandBinding_CanExecute" />
+		<CommandBinding Command="Help"
+						Executed="CommandBinding_Executed_1"
+						CanExecute="CommandBinding_CanExecute_1" />
+	</Window.CommandBindings>
+
+	<DockPanel>
+		<Menu DockPanel.Dock="Top">
+			<MenuItem Header="_File">
+				<MenuItem Header="New"
+						  Command="New">
+					<MenuItem.Icon>
+						<Image Source="..\Images\new_file.png"
+							   Width="16" />
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Header="Open"
+						  Command="Open">
+					<MenuItem.Icon>
+						<Image Source="..\Images\open_file.png"
+							   Width="16" />
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Header="Save"
+						  Command="Save" />
+				<Separator />
+				<MenuItem Command="helpers:CustomCommands.Exit" />
+			</MenuItem>
+			<MenuItem Header="_Edit">
+				<MenuItem  Command="Copy" />
+				<MenuItem  Command="Cut" />
+				<MenuItem  Command="Paste" />
+				<MenuItem Header="I_ncrease Size"
+						  Command="IncreaseFontSize" />
+			</MenuItem>
+			<MenuItem Header="Tools">
+				<MenuItem Command="Help" />
+				<MenuItem IsCheckable="True"
+						  Header="Zawijaj wiersze"
+						  IsChecked="True" />
+			</MenuItem>
+		</Menu>
+		<Button Command="Copy"
+				Content="Copy"
+				DockPanel.Dock="Bottom"
+				CommandTarget="{Binding ElementName=myRichTextBox}" />
+
+		<RichTextBox x:Name="myRichTextBox" />
+	</DockPanel>
+</Window>

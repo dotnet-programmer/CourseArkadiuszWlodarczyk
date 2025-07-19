@@ -1,126 +1,69 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using Chapter_10_AdvancedWpf.Chapters;
 
 namespace Chapter_10_AdvancedWpf;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class MainWindow : Window
 {
 	public MainWindow()
 		=> InitializeComponent();
 
-	private void Btn_10_1_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_01_BindingAndMarkupExtension());
+	private void BtnClick(object sender, RoutedEventArgs e)
+	{
+		if (e.OriginalSource is not Button button)
+		{
+			return;
+		}
 
-	private void Btn_10_2_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_02_EventsAndDelegates());
+		int index = button.Name.LastIndexOf('_') + 1;
+		int number = int.Parse(button.Name[index..]);
+		_ = number switch
+		{
+			1 => ShowWindow(new Chapter_10_01_BindingAndMarkupExtension()),
+			2 => ShowWindow(new Chapter_10_02_EventsAndDelegates()),
+			3 => ShowWindow(new Chapter_10_03_DataContextAndINotifyPropertyChanged()),
+			4 => ShowWindow(new Chapter_10_04_StaticResources_DynamicResources_Source()),
+			5 => ShowWindow(new Chapter_10_05_GroupBoxAndRadioButton()),
+			6 => ShowWindow(new Chapter_10_06_Popup()),
+			7 => ShowWindow(new Chapter_10_07_ToggleButton()),
+			8 => ShowWindow(new Chapter_10_08_Style()),
+			9 => ShowWindow(new Chapter_10_09_Triggers()),
+			10 => ShowWindow(new Chapter_10_10_Converter()),
+			11 => ShowWindow(new Chapter_10_11_MultiConditionalTrigger()),
+			12 => ShowWindow(new Chapter_10_12_EventTriggerAndAnimations()),
+			13 => ShowWindow(new Chapter_10_13_EasingFuncions()),
+			14 => ShowWindow(new Chapter_10_14_DataTrigger()),
+			15 => ShowWindow(new Chapter_10_15_ItemSource_ItemsControl_DataTemplate()),
+			16 => ShowWindow(new Chapter_10_16_UserControl()),
+			17 => ShowWindow(new Chapter_10_17_CustomDependencyProperty()),
+			18 => ShowWindow(new Chapter_10_18_Templates_ControlTemplate_ContentPresenter_TemplateBinding()),
+			19 => ShowWindow(new Chapter_10_19_MultiDataTriggerAndRelativeSource()),
+			20 => ShowWindow(new Chapter_10_20_ListBoxAndObservableCollection()),
+			21 => ShowWindow(new Chapter_10_21_ComboBox()),
+			22 => ShowWindow(new Chapter_10_22_Listview()),
+			23 => ShowWindow(new Chapter_10_23_ListViewSortingData()),
+			24 => ShowWindow(new Chapter_10_24_DataGrid()),
+			25 => ShowWindow(new Chapter_10_25_TemplateSelector()),
+			26 => ShowWindow(new Chapter_10_26_MenusAndBuiltInCommands()),
+			27 => ShowWindow(new Chapter_10_27_CustomCommands()),
+			28 => ShowWindow(new Chapter_10_28_MoreThan1Window()),
+			29 => ShowWindow(new Chapter_10_29_MessageBoxAndDialogs()),
+			30 => ShowWindow(new Chapter_10_30_ContextMenuAndCommandParameter()),
+			31 => ShowWindow(new Chapter_10_31_TooltipAndtoolbar()),
+			32 => ShowWindow(new Chapter_10_32_Tabs_TabControlAndContentSource()),
+			33 => ShowWindow(new Chapter_10_33_X_Static()),
+			34 => ShowWindow(new Chapter_10_34_StringFormat()),
+			35 => ShowWindow(new Chapter_10_35_MultiBinding_StringFormatAndTargetNullValue()),
+			36 => ShowWindow(new Chapter_10_36_DispatcherTimer()),
+			37 => ShowWindow(new Chapter_10_37_CalendarAndDatePicker()),
+			_ => false
+		};
+	}
 
-	private void Btn_10_3_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_03_DataContextAndINotifyPropertyChanged());
-
-	private void Btn_10_4_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_04_StaticResources_DynamicResources_Source());
-
-	private void Btn_10_5_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_05_GroupBoxAndRadioButton());
-
-	private void Btn_10_6_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_06_Popup());
-
-	private void Btn_10_7_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_07_ToggleButton());
-
-	private void Btn_10_8_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_08_Style());
-
-	private void Btn_10_9_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_09_Triggers());
-
-	private void Btn_10_10_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_10_Converter());
-
-	private void Btn_10_11_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_11_MultiConditionalTrigger());
-
-	private void Btn_10_12_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_12_EventTriggerAndAnimations());
-
-	private void Btn_10_13_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_13_EasingFuncions());
-
-	private void Btn_10_14_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_14_DataTrigger());
-
-	private void Btn_10_15_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_15_ItemSource_ItemsControl_DataTemplate());
-
-	private void Btn_10_16_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_16_UserControl());
-
-	private void Btn_10_17_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_17_CustomDependencyProperty());
-
-	private void Btn_10_18_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_18_Templates_ControlTemplate_ContentPresenter_TemplateBinding());
-
-	private void Btn_10_19_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_19_MultiDataTriggerAndRelativeSource());
-
-	private void Btn_10_20_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_20_ListBoxAndObservableCollection());
-
-	private void Btn_10_21_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_21_ComboBox());
-
-	private void Btn_10_22_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_22_Listview());
-
-	private void Btn_10_23_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_23_ListViewSortingData());
-
-	private void Btn_10_24_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_24_DataGrid());
-
-	private void Btn_10_25_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_25_TemplateSelector());
-
-	private void Btn_10_26_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_26_MenusAndBuiltInCommands());
-
-	private void Btn_10_27_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_27_CustomCommands());
-
-	private void Btn_10_28_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_28_MoreThan1Window());
-
-	private void Btn_10_29_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_29_MessageBoxAndDialogs());
-
-	private void Btn_10_30_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_30_ContextMenuAndCommandParameter());
-
-	private void Btn_10_31_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_31_TooltipAndtoolbar());
-
-	private void Btn_10_32_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_32_Tabs_TabControlAndContentSource());
-
-	private void Btn_10_33_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_33_X_Static());
-
-	private void Btn_10_34_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_34_StringFormat());
-
-	private void Btn_10_35_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_35_MultiBinding_StringFormatAndTargetNullValue());
-
-	private void Btn_10_36_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_36_DispatcherTimer());
-
-	private void Btn_10_37_Click(object sender, RoutedEventArgs e)
-		=> ShowWindow(new Chapter_10_37_CalendarAndDatePicker());
-
-	private void ShowWindow(Window window)
-		=> window.Show();
+	private static bool? ShowWindow(Window window)
+	{
+		window.Show();
+		return false;
+	}
 }

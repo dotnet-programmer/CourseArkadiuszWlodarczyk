@@ -1,0 +1,114 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapters.Chapter_10_09_Triggers"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="Chapter_10_09_Triggers"
+		Height="500"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<StackPanel>
+		<StackPanel.Resources>
+			<Style TargetType="{x:Type ToggleButton}"
+				   x:Key="OnOffToggleButton">
+				
+				<Setter Property="Content"
+						Value="On" />
+				
+				<Style.Triggers>
+					<Trigger Property="IsChecked"
+							 Value="True">
+						<Setter Property="Content"
+								Value="Off" />
+					</Trigger>
+				</Style.Triggers>
+				
+			</Style>
+		</StackPanel.Resources>
+
+		<ToggleButton Style="{StaticResource OnOffToggleButton}" />
+
+		<ToggleButton x:Name="BtnSurvey"
+					  IsChecked="{Binding ElementName=Survey, Path=IsOpen}">
+			<ToggleButton.Style>
+				<Style TargetType="{x:Type ToggleButton}">
+					<Setter Property="FontSize"
+							Value="25" />
+					<Setter Property="Content"
+							Value="Pokaż ankietę" />
+					<Style.Triggers>
+						<!--jeśli właściwość IsChecked zostanie zmieniona na True, to wykonaj kod z Triggera,
+						w przeciwnym razie ustaw wartości domyślne-->
+						<Trigger Property="IsChecked"
+								 Value="True">
+							<Setter Property="Content"
+									Value="Ukryj ankietę" />
+							<Setter Property="FontWeight"
+									Value="Bold" />
+						</Trigger>
+					</Style.Triggers>
+				</Style>
+			</ToggleButton.Style>
+		</ToggleButton>
+
+		<Popup x:Name="Survey"
+			   AllowsTransparency="True"
+			   PlacementTarget="{Binding ElementName=BtnSurvey}">
+
+			<StackPanel>
+				<StackPanel.Resources>
+					<Style TargetType="{x:Type GroupBox}"
+						   x:Key="HeaderLook">
+						<Setter Property="Foreground"
+								Value="Crimson" />
+						<Setter Property="HeaderTemplate">
+							<Setter.Value>
+								<DataTemplate>
+									<TextBlock Text="{Binding}"
+											   Background="LightBlue"
+											   Padding="3"
+											   FontWeight="Bold" />
+								</DataTemplate>
+							</Setter.Value>
+						</Setter>
+						<Setter Property="BorderThickness"
+								Value="2" />
+					</Style>
+				</StackPanel.Resources>
+
+				<GroupBox Margin="10"
+						  Header="Ile grasz dziennie na komputerze?"
+						  Style="{StaticResource HeaderLook}">
+					<StackPanel Margin="10">
+						<RadioButton Content="wcale" />
+						<RadioButton Content="1-3h" />
+						<RadioButton Content="3-6h" />
+						<RadioButton Content="24/h ;)" />
+					</StackPanel>
+				</GroupBox>
+
+				<GroupBox Margin="10"
+						  Header="Ile dziennie śpisz?"
+						  Style="{StaticResource HeaderLook}">
+					<StackPanel Margin="10">
+						<RadioButton Content="wcale" />
+						<RadioButton Content="1-3h" />
+						<RadioButton Content="3-6h" />
+						<RadioButton x:Name="RbMore">
+							<WrapPanel x:Name="PopupPanel">
+								<Label Content="więcej:" />
+								<Popup IsOpen="{Binding ElementName=RbMore, Path=IsChecked}"
+									   PlacementTarget="{Binding ElementName=PopupPanel}"
+									   HorizontalOffset="50"
+									   Placement="Right"
+									   PopupAnimation="Scroll"
+									   AllowsTransparency="True">
+									<TextBox MinWidth="50" />
+								</Popup>
+							</WrapPanel>
+						</RadioButton>
+					</StackPanel>
+				</GroupBox>
+			</StackPanel>
+		</Popup>
+	</StackPanel>
+</Window>

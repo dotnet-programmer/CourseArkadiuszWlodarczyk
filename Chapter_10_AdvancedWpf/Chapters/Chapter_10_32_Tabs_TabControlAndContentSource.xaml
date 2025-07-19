@@ -1,0 +1,53 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapters.Chapter_10_32_Tabs_TabControlAndContentSource"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="Chapter_10_32_Tabs_TabControlAndContentSource"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<Window.Resources>
+		<ControlTemplate x:Key="TabItemTemplate"
+						 TargetType="{x:Type TabItem}">
+			<Border x:Name="ContentPresenterBorder"
+					Padding="9"
+					BorderBrush="Gainsboro"
+					BorderThickness="1,1,1,0"
+					Margin="2,0"
+					CornerRadius="4,4,0,0">
+				<ContentPresenter ContentSource="Header" />
+			</Border>
+
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsSelected"
+						 Value="True">
+					<Setter Property="Border.BorderThickness"
+							Value="2,2,2,0"
+							TargetName="ContentPresenterBorder" />
+					<Setter Property="Border.BorderBrush"
+							Value="Black"
+							TargetName="ContentPresenterBorder" />
+					<Setter Property="TextBlock.FontSize"
+							Value="20" />
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+	</Window.Resources>
+
+	<Grid>
+		<TabControl>
+			<TabItem Header="Names"
+					 Template="{StaticResource TabItemTemplate}">
+				Zawartość
+			</TabItem>
+			<TabItem Header="Addresses"
+					 Template="{StaticResource TabItemTemplate}">
+				Adresy
+			</TabItem>
+			<TabItem Header="Details"
+					 Template="{StaticResource TabItemTemplate}">
+				Szczegóły
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>

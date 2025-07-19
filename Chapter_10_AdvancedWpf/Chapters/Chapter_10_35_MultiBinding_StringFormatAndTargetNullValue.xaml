@@ -1,0 +1,36 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapters.Chapter_10_35_MultiBinding_StringFormatAndTargetNullValue"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:models="clr-namespace:Chapter_10_AdvancedWpf.Models"
+		Title="Chapter_10_35_MultiBinding_StringFormatAndTargetNullValue"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<Window.Resources>
+		<models:PersonData3 x:Key="person1"
+						   Name="Jakiś Person"
+						   Age="{x:Null}" />
+		<models:PersonData3 x:Key="person2"
+						   Name="{x:Null}"
+						   Age="66" />
+	</Window.Resources>
+
+	<StackPanel>
+		<TextBlock Margin="10"
+				   DataContext="{StaticResource person1}"
+				   Text="{Binding Path=Name, StringFormat=Imię: {0}, TargetNullValue=Nie podano imienia}" />
+
+		<TextBlock Margin="10"
+				   DataContext="{StaticResource person2}">
+			<TextBlock.Text>
+				<MultiBinding StringFormat="Imię: {0}, Wiek: {1}">
+					<Binding Path="Name"
+							 TargetNullValue="brak" />
+					<Binding Path="Age"
+							 TargetNullValue="brak" />
+				</MultiBinding>
+			</TextBlock.Text>
+		</TextBlock>
+	</StackPanel>
+</Window>

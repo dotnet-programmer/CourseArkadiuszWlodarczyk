@@ -1,0 +1,20 @@
+﻿<Window x:Class="Chapter_10_AdvancedWpf.Chapters.Chapter_10_37_CalendarAndDatePicker"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="Chapter_10_37_CalendarAndDatePicker"
+		Height="400"
+		Width="600"
+		WindowStartupLocation="CenterScreen">
+
+	<StackPanel>
+		<Calendar SelectionMode="MultipleRange"
+				  DisplayMode="Month"
+				  SelectedDatesChanged="Calendar_SelectedDatesChanged">
+			<Calendar.BlackoutDates>
+				<CalendarDateRange Start="07/19/2014"
+								   End="07/24/2014" />
+			</Calendar.BlackoutDates>
+		</Calendar>
+		<ComboBox x:Name="dateCombo" />
+	</StackPanel>
+</Window>

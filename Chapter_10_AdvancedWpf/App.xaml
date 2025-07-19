@@ -2,9 +2,11 @@
 			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:local="clr-namespace:Chapter_10_AdvancedWpf"
-			 xmlns:prop="clr-namespace:Chapter_10_AdvancedWpf"
-			 StartupUri="MainWindow.xaml">
+			 xmlns:helpers="clr-namespace:Chapter_10_AdvancedWpf.Helpers"
+			 StartupUri="MainWindow.xaml"
+			 ThemeMode="System">
 	<Application.Resources>
-		<!--<prop:InkEditingModes x:Key="inkEditingModes" EditingMode="EraseByPoint"/>-->
+		<!--obiekt InkEditingModes w zasobach aplikacji-->
+		<!--<helpers:InkEditingModes x:Key="inkEditingModes" EditingMode="EraseByPoint"/>-->
 	</Application.Resources>
 </Application>
