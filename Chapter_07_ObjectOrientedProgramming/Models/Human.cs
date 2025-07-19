@@ -1,4 +1,4 @@
-﻿namespace Chapter_07_ObjectOrientedProgrammin;
+﻿namespace Chapter_07_ObjectOrientedProgramming.Models;
 
 internal class Human
 {

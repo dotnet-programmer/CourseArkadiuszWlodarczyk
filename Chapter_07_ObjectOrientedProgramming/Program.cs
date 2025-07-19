@@ -1,4 +1,4 @@
-﻿using Chapter_07_ObjectOrientedProgrammin;
+﻿using Chapter_07_ObjectOrientedProgramming.Models;
 
 #region Chapter 7.1 Object-Oriented Programming - Introduction
 Console.WriteLine("Chapter 7.1 Object-Oriented Programming - Introduction");
